@@ -1,0 +1,24 @@
+# eks-prod.yaml
+apiVersion: eksctl.io/v1alpha6
+kind: ClusterConfig
+
+metadata:
+  name: eks-prod
+  region: ap-northeast-2
+  version: "1.30"
+
+vpc:
+  nat:
+    gateway: HighlyAvailable
+
+iam:
+  withOIDC: true
+
+managedNodeGroups:
+  - name: managed-ng-1
+    instanceType: t3.medium
+    desiredCapacity: 2
+    privateNetworking: true
+    ssh:
+      enableSsh: true
+      publicKeyName: SecondFit-TestDB-EC2
