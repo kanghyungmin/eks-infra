@@ -1,24 +1,43 @@
-# eks-prod.yaml
-apiVersion: eksctl.io/v1alpha6
+apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
   name: eks-prod
   region: ap-northeast-2
-  version: "1.30"
+  version: "1.31"
 
 vpc:
   nat:
     gateway: HighlyAvailable
+  # 필요시 서브넷 구성 추가
 
 iam:
   withOIDC: true
+  serviceAccounts:
+    - metadata:
+        name: my-service-account
+        namespace: default
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+  # 필요한 추가 IAM 정책을 붙이세요
 
 managedNodeGroups:
   - name: managed-ng-1
     instanceType: t3.medium
     desiredCapacity: 2
+    maxSize: 4           # 선택 사항: 최대 크기 정의
+    minSize: 1           # 선택 사항: 최소 크기 정의
     privateNetworking: true
     ssh:
-      enableSsh: true
+      allow: true
       publicKeyName: SecondFit-TestDB-EC2
+
+addons:
+  - name: vpc-cni
+    version: latest
+    podIdentityAssociations:
+      - serviceAccountName: my-service-account
+        namespace: default
+#    attachPolicyARNs:
+#     - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+# 필요한 경우 다른 애드온 추가

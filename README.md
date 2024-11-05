@@ -38,10 +38,32 @@
         --ssh-public-key thomas \      # SSH 접근을 위해 'thomas'라는 이름의 공개 키를 사용
         --managed                      # AWS에서 관리되는 노드 그룹을 생성하여 자동 업데이트와 패치 적용을 받음
 
-    eksctl delete cluster --name eks-demo --region ap-northeast-2
+    
+    eksctl create cluster -f cluster.yaml
+    eksctl delete cluster --name eks-prod --region ap-northeast-2
+    https://aws.amazon.com/ko/blogs/containers/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
-- [] AWS EKS에 lstio 설치 및 설정
-- [] Cluster 외부 통신 Ingress 연결
-- [] Pod와 Container를 위한 HPA
-- [] AWS EKS의 Karpenter 설정
+    eksctl utils update-cluster-vpc-config --cluster=eks-prod --private-access=true --public-access=true --approve
+
+     eksctl utils update-cluster-vpc-config --public-access-cidrs=15.164.94.4/32 --cluster eks-prod --approve
+
+
+     kubectl label namespace default istio-injection=enabled
+
+    $ eksctl utils set-public-access-cidrs --cluster=eks-demo 1.1.1.1/32 --approve
+
+    eksctl update addon --name vpc-cni --cluster eks-prod --region ap-northeast-2
+
+    15.164.94.4 => bastion host
+
+    설정 확인: 서비스 계정과 IAM 역할이 올바르게 연결되었는지 점검합니다.
+    kubectl get serviceaccount my-service-account -n default -o yaml
+
+
+- [] AWS EKS에 lstio 설치 및 설정(화요일)
+     istioctl install -f istio.yaml
+- [] Cluster 외부 통신 Ingress 연결(수요일)
+- [] Pod와 Container를 위한 HPA(목요일)
+- [] AWS EKS의 Karpenter 설정(금요일)
 - [] 부하 분산에 따른 테스트
+- [] EKS 기반 AWS Architecuture 수립
