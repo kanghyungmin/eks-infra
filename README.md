@@ -1,6 +1,6 @@
 # Lists 
   - AWS EKS gen by eksctl
-     1) [Kubectl 설치, AWS Cli 설치, eksctl cli 설치](https://github.com/kanghyungmin/nestjs-ddd/blob/dev/PROJECT_SCHEME.md)
+     1) [Kubectl 설치, AWS Cli 설치, eksctl cli 설치](https://github.com/kanghyungmin/eks-infra/blob/master/documentation/build_eks.md)
      2) [Cluster 환경 구성](https://github.com/kanghyungmin/eks-infra/blob/master/cluster.yaml)
      3) 실행 명령어
       ```bash
@@ -8,9 +8,15 @@
       eksctl utils update-cluster-vpc-config --cluster=eks-prod --private-access=true --public-access=true --approve #private-access 설정
       eksctl utils update-cluster-vpc-config --public-access-cidrs=1.1.1.1/32 --cluster eks-prod --approve # bastion host ip acl
       eksctl delete cluster --name eks-prod --region ap-northeast-2 # cluster 삭제
-      ```
-     4) 참조 문서
-        + https://aws.amazon.com/ko/blogs/containers/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+      ```  
+    
+  - AWS EKS에 lstio 설치 및 설정
+    - 
+
+  
+  - 참조 문서
+    1) https://aws.amazon.com/ko/blogs/containers/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+    2) 
     
     
     
@@ -32,7 +38,7 @@
     kubectl get serviceaccount my-service-account -n default -o yaml
 
 
-- [] AWS EKS에 lstio 설치 및 설정(화요일)
+- [] (화요일)
      istioctl install -f istio.yaml
 - [] Cluster 외부 통신 Ingress 연결(수요일)
 - [] Pod와 Container를 위한 HPA(목요일)
