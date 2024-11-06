@@ -9,17 +9,17 @@ metadata:
 vpc:
   nat:
     gateway: HighlyAvailable
-  # 필요시 서브넷 구성 추가
+  
 
 iam:
   withOIDC: true
   serviceAccounts:
     - metadata:
-        name: my-service-account
+        name: eks-service-account
         namespace: default
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-  # 필요한 추가 IAM 정책을 붙이세요
+  
 
 managedNodeGroups:
   - name: managed-ng-1
@@ -36,7 +36,7 @@ addons:
   - name: vpc-cni
     version: latest
     podIdentityAssociations:
-      - serviceAccountName: my-service-account
+      - serviceAccountName: eks-service-account
         namespace: default
 #    attachPolicyARNs:
 #     - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
