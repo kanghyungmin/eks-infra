@@ -1,16 +1,17 @@
-# Contents 
+# Contents    
   - AWS EKS gen by eksctl
-     1) [Kubectl 설치, AWS Cli 설치, eksctl cli 설치](https://github.com/kanghyungmin/eks-infra/blob/master/documentation/build_eks.md)
-     2) [Cluster 환경 구성](https://github.com/kanghyungmin/eks-infra/blob/master/cluster.yaml)
-     3) 실행 명령어
+    1) [Kubectl 설치, AWS Cli 설치, eksctl cli 설치](https://github.com/kanghyungmin/eks-infra/blob/master/documentation/build_eks.md)
+    2) [Cluster 환경 구성](https://github.com/kanghyungmin/eks-infra/blob/master/cluster.yaml)
+    3) 실행 명령어
       ```bash
       eksctl create cluster -f cluster.yaml #cluster 생성
       eksctl utils update-cluster-vpc-config --cluster=eks-prod --private-access=true --public-access=true --approve #private-access 설정
       eksctl utils update-cluster-vpc-config --public-access-cidrs=1.1.1.1/32 --cluster eks-prod --approve # bastion host ip acl
       eksctl delete cluster --name eks-prod --region ap-northeast-2 # cluster 삭제
-      ```  
-  - AWS EKS에 lstio 설치 및 설정
-    - 
+      ```
+  - AWS EKS에 lstio 설치 및 설정  
+    1) 실행 명령어
+
 
   
   - 참조 문서
