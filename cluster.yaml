@@ -33,11 +33,9 @@ managedNodeGroups:
       publicKeyName: SecondFit-TestDB-EC2
 
 addons:
-  - name: vpc-cni
-    version: latest
-    podIdentityAssociations:
-      - serviceAccountName: eks-service-account
-        namespace: default
-#    attachPolicyARNs:
-#     - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+- name: vpc-cni
+  podIdentityAssociations:
+  - namespace: kube-system
+    permissionPolicyARNs: ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]
+    serviceAccountName: aws-node
 # 필요한 경우 다른 애드온 추가

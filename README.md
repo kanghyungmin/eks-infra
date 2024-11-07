@@ -9,14 +9,31 @@
       eksctl utils update-cluster-vpc-config --public-access-cidrs=1.1.1.1/32 --cluster eks-prod --approve # bastion host ip acl
       eksctl delete cluster --name eks-prod --region ap-northeast-2 # cluster 삭제
       ```
-  - AWS EKS에 lstio 설치 및 설정  
-    1) 실행 명령어
+  - AWS EKS에 istio 설치 및 설정  
+    1) istioctl 설치 
+      ```
+      $ curl -sL https://istio.io/downloadIstioctl | sh -
+      $ cp ~/.istioctl/bin/istioctl ~/bin
+      ```
+    2) [istioctl 파일 생성](https://github.com/kanghyungmin/eks-infra/blob/master/istio.yaml)
+    3) istio 배포 
+      ```
+      $ istioctl install -f istio-operator.yaml
+      ```
+    4) istio 배포 확인
+      ```
+      $ kubectl get pods -n istio-system
+      ```
+    5) auto injection with namesapce label
+      ```
+      $ kubectl label namespace default istio-injection=enabled
+      ```
 
 
   
   - 참조 문서
     1) https://aws.amazon.com/ko/blogs/containers/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
-    2) 
+    2) https://devocean.sk.com/blog/techBoardDetail.do?ID=163656
     
     
     
