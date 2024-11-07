@@ -9,7 +9,9 @@ metadata:
 vpc:
   nat:
     gateway: HighlyAvailable
-  
+  clusterEndpoints:
+    publicAccess: true   # 퍼블릭 엔드포인트 비활성화
+    privateAccess: true   # 프라이빗 엔드포인트 활성화  
 
 iam:
   withOIDC: true
@@ -32,10 +34,17 @@ managedNodeGroups:
       allow: true
       publicKeyName: SecondFit-TestDB-EC2
 
+# addons:
+#   - name: vpc-cni
+#     podIdentityAssociations:
+#       - namespace: default
+#         permissionPolicyARNs: ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]
+#         serviceAccountName: eks-service-account
+#   - name: eks-pod-identity-agent
+#     version: latest
+
 addons:
-- name: vpc-cni
-  podIdentityAssociations:
-  - namespace: kube-system
-    permissionPolicyARNs: ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]
-    serviceAccountName: aws-node
-# 필요한 경우 다른 애드온 추가
+  - name: vpc-cni
+    version: latest
+    attachPolicyARNs:
+      - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
