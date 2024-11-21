@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-alb
+  namespace: istio-system
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/description: 'alb ingress controller'
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready   # 상태 확인 경로
+    alb.ingress.kubernetes.io/healthcheck-port: "15021"     # 상태 확인 포트
+    alb.ingress.kubernetes.io/target-type: ip
+
+spec:
+  ingressClassName : alb
+  rules:
+  - http:
+      paths:
+        - path: /                               # 모든 경로로 트래픽을 전달
+          pathType: Prefix                        # 경로 유형 설정
+          backend:
+            service:
+              name: istio-ingressgateway          # 서비스 이름
+              port:
+                number: 80                        # 서비스 포트
