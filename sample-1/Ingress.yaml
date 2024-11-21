@@ -22,4 +22,4 @@ spec:
             service:
               name: istio-ingressgateway          # 서비스 이름
               port:
-                number: 80                        # 서비스 포트
+                number: 80                    # 서비스 포트

@@ -73,12 +73,14 @@
       $ aws-load-balancer-controller가 잘 설치되었는지 확인
       $ kubectl get deployment -n kube-system aws-load-balancer-controller
     ```
-    4) ingressgateway의 Nodeport 인바운드 규칙 추가 to managedNG Security Group
-    5) 확인
+    4) ingressgateway의 Nodeport 인바운드 규칙 추가 to managedNG Security Group(15021)
+    5) target Group으로 Forward Port 인바운드 규칙 추가 to managedNG Security Group(8080)
 
   - []Cluster 외부 통신 Ingress 연결 with SSL
     1) 
-  - []Ingress Gateway 분리(수)
+  - []Ingress Gateway 분리
+    1) 
+  - []모니터링 Stack 구성(금)
   - []Pod 기반 HAP
   - []Node 기반 AutoScaling
   - []부하 분산에 따른 테스트
