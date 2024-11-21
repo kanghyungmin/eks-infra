@@ -33,10 +33,11 @@
       $ kubectl label namespace default istio-injection=enabled
       $ kubectl label namespace kube-node-lease istio-injection=enabled
       $ kubectl label namespace kube-public istio-injection=enabled
-      $ kubectl label namespace kube-system istio-injection=enabled
+      $ kubectl label namespace kube-system istio-injection=disabled --overwrite
+      $ kubectl get ns --show-labels
       ```
     6) istio issue check 
-      $ istioctl analyze --all-namespaces
+      $ istioctl analyze --all-namespaces --exclude-namespaces kube-system
     7) istio uninstall 
       ```
       $ istioctl uninstall --purge
@@ -72,15 +73,24 @@
       $ aws-load-balancer-controller가 잘 설치되었는지 확인
       $ kubectl get deployment -n kube-system aws-load-balancer-controller
     ```
+    4) ingressgateway의 Nodeport 인바운드 규칙 추가 to managedNG Security Group
+    5) 확인
 
+  - []Cluster 외부 통신 Ingress 연결 with SSL
+    1) 
+  - []Ingress Gateway 분리(수)
+  - []Pod 기반 HAP
+  - []Node 기반 AutoScaling
+  - []부하 분산에 따른 테스트
+  - []EKS 기반 AWS Architecuture 수립
+    
   - 참조 문서
     1) https://aws.amazon.com/ko/blogs/containers/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
     2) https://devocean.sk.com/blog/techBoardDetail.do?ID=163656
     3) https://aws-diary.tistory.com/60?category=753094
     4) 
-
-- [] Cluster 외부 통신 Ingress 연결(수요일)
-- [] Pod와 Container를 위한 HPA(목요일)
-- [] AWS EKS의 Karpenter 설정(금요일)
-- [] 부하 분산에 따른 테스트
-- [] EKS 기반 AWS Architecuture 수립
+  - 수작업 리스트 
+    - DNS A 레코드 추가 후, ALB 연동
+    - ALB controller 구성하기
+  - 향후 작업
+    - 리소스, namespace, 그리고 external Ingress까지 분리
