@@ -9,7 +9,7 @@ spec:
   type: ClusterIP
   ports:
   - name: http-80
-    port: 80
+  - port: 8082
     protocol: TCP
     targetPort: 80
   selector:
@@ -39,7 +39,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - name: http-80
-          containerPort: 80
+        - containerPort: 80
           protocol: TCP
         resources:
           limits:

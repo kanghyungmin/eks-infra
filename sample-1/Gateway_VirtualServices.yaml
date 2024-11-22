@@ -27,19 +27,19 @@ spec:
         - destination:
             host: yelb-ui
             port:
-              number: 80
+              number: 8082
       match:
         - uri:
             prefix: /
 
-# ---
-# apiVersion: networking.istio.io/v1beta1
-# kind: Sidecar
-# metadata:
-#   name: default
-# spec:
-#   outboundTrafficPolicy:
-#     mode: ALLOW_ANY
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Sidecar
+metadata:
+  name: default
+spec:
+  outboundTrafficPolicy:
+    mode: ALLOW_ANY
 
 # ---
 # apiVersion: install.istio.io/v1alpha1

@@ -80,9 +80,10 @@
     1) 
   - []Ingress Gateway 분리
     1) 
-  - []모니터링 Stack 구성(금)
-  - []Pod 기반 HAP
-  - []Node 기반 AutoScaling
+  - CI/CD Pipeline 구성
+  - []모니터링 Stack 구성(월)
+  - []Pod 기반 HAP(화)
+  - []Node 기반 AutoScaling(목)
   - []부하 분산에 따른 테스트
   - []EKS 기반 AWS Architecuture 수립
     

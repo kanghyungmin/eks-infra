@@ -19,7 +19,11 @@ spec:
         hpaSpec:
           minReplicas: 2
         service:
-          type: NodePort # prod
+          type: NodePort # for ALB
+          ports: 
+            - name: http
+              port: 80
+              targetPort: 8082
     pilot:
       enabled: true
       k8s:
