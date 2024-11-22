@@ -74,8 +74,8 @@
       $ aws-load-balancer-controller가 잘 설치되었는지 확인
       $ kubectl get deployment -n kube-system aws-load-balancer-controller
     ```
-    4) ingressgateway의 status port 허용 to managedNG SG
-    5) 외부 노드 Service port 허용 to managedNG SG
+    4) ingressgateway의 status Port 허용 to managedNG SG
+    5) Kubernetest Service Port 허용 to managedNG SG
 
   - Cluster 외부 통신 Ingress 연결 with SSL
     1) Annotation에 다음 필드 추가.
@@ -83,7 +83,7 @@
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/certificate-arn: CA arm ID
     ```
-  - Ingress Gateway 분리
+  - Ingress Gateway 분리  
     1) 
   - CI/CD Pipeline 구성
   - 모니터링 Stack 구성(월)
@@ -101,5 +101,3 @@
     - DNS A 레코드 추가 후, ALB 연동
     - ALB controller 구성하기
     - SSL 설정 후, CA 맞는 도메인 연결
-  - 향후 작업
-    - 리소스, namespace, 그리고 external Ingress까지 분리
