@@ -61,7 +61,8 @@
               --approve
       $ eksctl get iamserviceaccount --cluster eks-prod # cluster 내 SA 정보 확인 
     ```
-    3) Helm 설치 & aws-load-balancer-controller 설치 및 확인
+    3) Helm 설치 & aws-load-balancer-controller 설치 및 확인  
+    ```
       $ sudo snap install helm --classic
       $ helm repo add eks https://aws.github.io/eks-charts
       $ helm repo update
