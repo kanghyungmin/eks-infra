@@ -77,7 +77,11 @@
     5) target Group으로 Forward Port 인바운드 규칙 추가 to managedNG Security Group(8080)
 
   - []Cluster 외부 통신 Ingress 연결 with SSL
-    1) 
+    1) Annotation에 다음 필드 추가.
+    ```
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: CA arm ID
+    ```
   - []Ingress Gateway 분리
     1) 
   - CI/CD Pipeline 구성
