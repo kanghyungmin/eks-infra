@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yelb-ui
+  labels:
+    app: yelb-ui
+    tier: frontend
+spec:
+  type: ClusterIP
+  ports:
+  - name: http-80
+    port: 8082
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: yelb-ui
+    tier: frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yelb-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: yelb-ui
+      tier: frontend    
+  template:
+    metadata:
+      labels:
+        app: yelb-ui
+        tier: frontend
+        version: v1
+    spec:
+      containers:
+      - name: yelb-ui
+        image: nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - name: http-80
+          containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 512m
+            memory: 1024Mi  
+          requests:
+            cpu: 256m
+            memory: 256Mi
