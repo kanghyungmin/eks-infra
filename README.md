@@ -84,11 +84,11 @@
     alb.ingress.kubernetes.io/certificate-arn: CA arm ID
     ```
   - Ingress Gateway 분리  
-    1) 
-  - CI/CD Pipeline 구성(화)
-  - 모니터링 Stack 구성(목)
-  - Pod 기반 HAP(화)
-  - Node 기반 AutoScaling(목)
+    1) sample-2 예제 참조 
+  - CI/CD Pipeline 구성(수/목)
+  - 모니터링 Stack 구성(금/월)
+  - Pod 기반 HAP(화/수)
+  - Node 기반 AutoScaling(목/금)
   - 부하 분산에 따른 테스트
   - EKS 기반 AWS Architecuture 수립
     
