@@ -4,7 +4,7 @@ metadata:
   name: yelb-gateway
 spec:
   selector:
-    istio: ingressgateway
+    istio: dev-ingressgateway
   servers:
     - port:
         number: 80

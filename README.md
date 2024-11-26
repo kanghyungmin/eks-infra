@@ -85,8 +85,8 @@
     ```
   - Ingress Gateway 분리  
     1) 
-  - CI/CD Pipeline 구성
-  - 모니터링 Stack 구성(월)
+  - CI/CD Pipeline 구성(화)
+  - 모니터링 Stack 구성(목)
   - Pod 기반 HAP(화)
   - Node 기반 AutoScaling(목)
   - 부하 분산에 따른 테스트

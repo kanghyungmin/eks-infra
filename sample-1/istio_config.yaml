@@ -2,28 +2,30 @@ apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
   namespace: istio-system
-  name: istiocontrolplane
+  name: istiocontrolplane  # 이름은 istiocontrolplane으로 유지
 spec:
   profile: default
   components:
     egressGateways:
-    - name: istio-egressgateway
-      enabled: true
-      k8s:
-        hpaSpec:
-          minReplicas: 2
+      - name: istio-egressgateway
+        enabled: true
+        k8s:
+          hpaSpec:
+            minReplicas: 2
     ingressGateways:
-    - name: istio-ingressgateway
-      enabled: true
-      k8s:
-        hpaSpec:
-          minReplicas: 2
-        service:
-          type: NodePort # for ALB
-          ports: 
-            - name: http
-              port: 80
-              targetPort: 8082
+      - name: dev-ingressgateway  # 라벨 추가
+        enabled: true
+        k8s:
+          hpaSpec:
+            minReplicas: 2
+          service:
+            type: NodePort  # ALB 사용을 위한 NodePort 설정
+            ports:
+              - name: http
+                port: 80
+                targetPort: 8082
+        label: 
+          istio: dev-ingressgateway  
     pilot:
       enabled: true
       k8s:
