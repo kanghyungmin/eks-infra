@@ -109,7 +109,7 @@
     ```
     2) Dev branch 및 Pro branch 변경 시, CI 구성
     - Dev : PR Merge 시, build 후, ECR 푸쉬
-    - Prod : version Tagging 시, build 후 ECR 푸쉬 
+    - Prod : Version Tagging 시, build 후 ECR 푸쉬 
   - 모니터링 Stack 구성(금/월)
   - Pod 기반 HAP(화/수)
   - Node 기반 AutoScaling(목/금)
