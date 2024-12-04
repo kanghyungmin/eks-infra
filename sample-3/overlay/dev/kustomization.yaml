@@ -1,5 +1,12 @@
-bases:
+resources:
 - ../../base
 patchesStrategicMerge:
   - deployment-patch.yaml
   - service-patch.yaml
+commonLabels:
+  env: dev
+configMapGenerator:
+  - name: app-env-vars
+    behavior: merge
+    envs:
+    - conf/app.env

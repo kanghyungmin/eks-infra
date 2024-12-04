@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-env-vars
+data:
+  FOO: BAR
+  HELLO: WORLD
