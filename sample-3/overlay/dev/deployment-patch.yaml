@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-nginx
 spec:
-  replicas: 4
+  replicas: 2
   template:
     spec:
       containers:
