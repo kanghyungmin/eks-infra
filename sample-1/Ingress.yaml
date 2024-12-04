@@ -5,8 +5,8 @@ metadata:
   namespace: istio-system
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:886436932322:certificate/c9350a7a-d5e2-4e33-8d9d-5d8c6261bedd"
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    # alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-northeast-2:886436932322:certificate/c9350a7a-d5e2-4e33-8d9d-5d8c6261bedd"
     alb.ingress.kubernetes.io/description: 'alb ingress controller'
     alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready   # 상태 확인 경로
     alb.ingress.kubernetes.io/healthcheck-port: "15021"     # 상태 확인 포트
