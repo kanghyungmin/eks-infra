@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       run: secondfit-api-server-pod
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - name: secondfit-api-server-container
-        image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
+        # image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
+        image: nginx
         ports:
         - containerPort: 80
