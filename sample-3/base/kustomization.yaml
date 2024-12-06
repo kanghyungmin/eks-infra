@@ -6,4 +6,4 @@ kind: Kustomization
 images:
 - name: 886436932322.dkr.ecr.ap-northeast-2.amazonaws.com/prod/api-server
   newName: 886436932322.dkr.ecr.ap-northeast-2.amazonaws.com/prod/api-server
-  newTag: 5e625f4e02e4d825d8ca3ccdc11e82daace4fa32
+  newTag: 6f9613aab8ce8ee9dd06a59befc1f5f22d9f642e
