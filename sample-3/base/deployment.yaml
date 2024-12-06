@@ -15,7 +15,13 @@ spec:
     spec:
       containers:
       - name: secondfit-api-server-container
-        # image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
-        image: nginx
+        image: 886436932322.dkr.ecr.ap-northeast-2.amazonaws.com/dev/api-servier:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
         ports:
         - containerPort: 80
