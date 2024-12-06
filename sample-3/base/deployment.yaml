@@ -1,19 +1,20 @@
+# api-server
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: secondfit-api-server-deployment
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: secondfit-api-server-pod
   replicas: 2
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: secondfit-api-server-pod
     spec:
       containers:
-      - name: my-nginx
-        image: nginx
+      - name: secondfit-api-server-container
+        image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
         ports:
         - containerPort: 80
