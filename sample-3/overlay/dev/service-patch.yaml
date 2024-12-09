@@ -3,4 +3,4 @@ kind: Service
 metadata:
   name: secondfit-api-server-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
