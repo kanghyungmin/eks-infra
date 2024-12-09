@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
       - name: secondfit-api-server-container
-        # image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
-        image: 886436932322.dkr.ecr.ap-northeast-2.amazonaws.com/prod/api-server:latest
+        image: 886436932322.dkr.ecr.ap-northeast-2.amazonaws.com/prod/api-server:de4e1c2a4b259fd31632ffdf1aea58d777479363
         ports:
         - containerPort: 3005
+      imagePullSecrets:
+      - name: ecr-secret
