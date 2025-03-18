@@ -6,8 +6,11 @@
       ```bash
       eksctl create cluster -f cluster.yaml #cluster 생성
       eksctl utils update-cluster-vpc-config --cluster=eks-prod --private-access=true --public-access=true --approve #private-access 설정
-      eksctl utils update-cluster-vpc-config --public-access-cidrs= 15.164.94.4/32 --cluster eks-prod --approve # bastion host ip acl
-      eksctl delete cluster --name eks-prod --region ap-northeast-2 # cluster 삭제
+      eksctl utils update-cluster-vpc-config \ //bastion host acl
+  --cluster eks-prod \
+  --public-access-cidrs 15.164.94.4/32 \
+  --approve # bastion host ip acl
+      eksctl delete cluster --name eks-prod --region ap-northeast-2 
 
       # 설정 확인: 서비스 계정과 IAM 역할이 올바르게 연결되었는지 점검합니다.
       kubectl get serviceaccount eks-service-account -n default -o yaml 
