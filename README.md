@@ -6,7 +6,7 @@
       ```bash
       eksctl create cluster -f cluster.yaml #cluster 생성
       eksctl utils update-cluster-vpc-config --cluster=eks-prod --private-access=true --public-access=true --approve #private-access 설정
-      eksctl utils update-cluster-vpc-config \ //bastion host acl
+      eksctl utils update-cluster-vpc-config \ 
   --cluster eks-prod \
   --public-access-cidrs 15.164.94.4/32 \
   --approve # bastion host ip acl
@@ -33,11 +33,11 @@
       ```
     5) auto injection with namesapce label
       ```
-      $ kubectl label namespace default istio-injection=enabled
-      $ kubectl label namespace kube-node-lease istio-injection=enabled
-      $ kubectl label namespace kube-public istio-injection=enabled
-      $ kubectl label namespace kube-system istio-injection=disabled --overwrite
-      $ kubectl get ns --show-labels
+      kubectl label namespace default istio-injection=enabled
+      kubectl label namespace kube-node-lease istio-injection=enabled
+      kubectl label namespace kube-public istio-injection=enabled
+      kubectl label namespace kube-system istio-injection=disabled --overwrite
+      kubectl get ns --show-labels
       ```
     6) istio issue check 
       $ istioctl analyze --all-namespaces --exclude-namespaces kube-system
@@ -71,7 +71,7 @@
       $ helm repo update
       $ #aws-load-balancer-controller 설치
       $ helm install aws-load-balancer-controller eks/aws-load-balancer-controller   -n kube-system \
-          --set clusterName=eks-pord \
+          --set clusterName=eks-prod \
           --set serviceAccount.create=false \
           --set serviceAccount.name=aws-load-balancer-controller
       $ aws-load-balancer-controller가 잘 설치되었는지 확인

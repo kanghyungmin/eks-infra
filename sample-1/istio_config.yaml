@@ -23,10 +23,12 @@ spec:
             ports:
               - name: http
                 port: 80
-                targetPort: 8082
+                targetPort: 8082  # 대
+                # nodePort: 32477
               - name: status-port
                 port: 15021
                 targetPort: 15021
+                # nodePort: 32555
         label: 
           istio: dev-ingressgateway  
     pilot:

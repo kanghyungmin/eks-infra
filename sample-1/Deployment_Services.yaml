@@ -20,7 +20,7 @@ kind: Deployment
 metadata:
   name: yelb-ui
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels: 
       app: yelb-ui
